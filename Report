@@ -1,0 +1,48 @@
+Gene Causality Analysis using Phenotype-Gene Embeddings
+
+1. Introduction
+
+The objective of this exercise is to explore if the embeddings of phenotypes and their corresponding genes can indicate gene causality. Given embeddings for a set of phenotypes and genes, our goal is to analyze these embeddings for patterns that separate causal gene-phenotype pairs from non-causal ones.
+
+2. Data Preparation
+
+We began with the following files as specified:
+
+opentargets_step2.for_llm.tsv: Contains phenotypes and associated genes.
+gene_embeddings.csv and phenotype_embeddings.csv: 3072-dimensional embeddings for each gene and phenotype.
+opentargets_step2.labels: Indicates the causal gene for each phenotype.
+To ensure a unique subset, we hashed our name to generate a random seed, using it to sample 500 phenotypes. This approach guarantees reproducibility while providing a personalized dataset.
+
+3. Methodology
+
+Data Integration and Labeling:
+
+Merged phenotype and gene embeddings using unique identifiers.
+Labeled each phenotype-gene pair as "causal" or "non-causal" based on the causal gene identified in opentargets_step2.labels.
+
+Dimensionality Reduction (PCA):
+
+Since analyzing the raw 3072-dimensional embeddings is computationally intensive and difficult to visualize, we applied Principal Component Analysis (PCA) to reduce the embeddings to 2 dimensions.
+The reduced data was visualized to check if causal and non-causal pairs show any discernible patterns.
+
+Clustering (K-means):
+
+We applied K-means clustering with two clusters (assuming potential separation of causal and non-causal pairs).
+By overlaying the cluster assignments on the reduced PCA space, we analyzed if clustering can distinguish between causal and non-causal embeddings.
+
+4. Results
+
+PCA Visualization:
+The scatter plot of PCA-reduced embeddings showed some grouping patterns, though clear separation of causal from non-causal pairs was not immediately apparent
+.
+Clustering Analysis:
+K-means clustering did produce distinct clusters; however, the overlap with causal and non-causal labels was partial.
+The cluster-label cross-tabulation indicated that while some causal pairs grouped together, the distinction was not absolute, suggesting that additional features or methods may be needed to fully capture causality signals.
+
+5. Conclusion and Future Work
+This exploratory analysis demonstrated that phenotype-gene embeddings contain some inherent patterns, though separating causal and non-causal relationships may require more complex modeling or additional embeddings manipulation. Future steps could involve advanced dimensionality reduction techniques, like t-SNE or UMAP, or supervised methods if labeled data becomes available. Additionally, further exploration of vector manipulations or neural embeddings might enhance causality detection.
+
+6. Files for Submission
+Jupyter Notebook: Contains the full code with comments for replicability.
+Processed Data CSV: Includes the PCA-reduced embeddings and clustering results.
+Visualization: Scatter plots for PCA and K-means clustering results.
