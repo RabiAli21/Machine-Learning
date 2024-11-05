@@ -55,5 +55,3 @@ ReportLab - PDF generation library for Python
 2. Create a new file named `README.md` in the same directory as your Python script.
 3. Paste the copied text into the `README.md` file.
 4. Save the file.
-
-Feel free to add more details or modify the sections to better suit your project! If you ne
